@@ -1,12 +1,36 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia"
+import type { ContentType, Range } from "@/types"
 
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
+type SearchParams = {
+  search: string
+  year: number
+  type: ContentType
+  page: Range<1, 101>
+}
+
+export const useSearchParams = defineStore({
+  id: "searchParams",
+  state: () => ({
+    searchParams: { search: "", year: 0, type: "all", page: 1 } as SearchParams
+  }),
+  getters: {
+    getSearch: (state) => state.searchParams.search,
+    getYear: (state) => state.searchParams.year,
+    getType: (state) => state.searchParams.type,
+    getPage: (state) => state.searchParams.page
+  },
+  actions: {
+    setSearch(value: string) {
+      this.searchParams.search = value
+    },
+    setYear(value: number) {
+      this.searchParams.year = value
+    },
+    setType(value: ContentType) {
+      this.searchParams.type = value
+    },
+    setPage(value: Range<1, 101>) {
+      this.searchParams.page = value
+    }
   }
-
-  return { count, doubleCount, increment }
 })
