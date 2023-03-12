@@ -6,11 +6,11 @@
 npm install
 ```
 
-Set up a .env file with a api uri:
+Set up a .env file with a api token:
 ```env
 API_KEY=YOUR_TOKEN_HERE
 ```
-You van get the token here: http://www.omdbapi.com/
+A token can be gotten here: http://www.omdbapi.com/
 
 ### Start the project 
 ```sh
