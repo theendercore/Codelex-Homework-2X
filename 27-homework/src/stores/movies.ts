@@ -41,7 +41,7 @@ export const useMovies = defineStore({
     },
 
     fetchNext() {
-      if (this.currentPage <= this.pages) {
+      if (this.currentPage < this.pages) {
         this.currentPage++
         this.fetchMovies(this.search, this.currentPage)
       }
