@@ -13,7 +13,7 @@ export const useMovies = defineStore({
     async fetchMovies(name: string) {
       this.loading = true
       let { data } = await axios.get<MoviesRequest | MoviesRequestFail>(
-        `http://www.omdbapi.com/?s=${name.trim()}&apikey=${import.meta.env.VITE_API_KEY}`
+        `http://www.omdbapi.com/?s=${name.trim()}&type=movie&apikey=${import.meta.env.VITE_API_KEY}`
       )
 
       let val = { error: { is: false, msg: "" }, movies: [] as Movie[] }

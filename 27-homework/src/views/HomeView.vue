@@ -1,6 +1,6 @@
 <script lang="ts">
 import SearchBar from "@/components/SearchBar.vue"
-import MovieList from "@/components/MovieList.vue"
+import MovieList from "@/components/MoveList/MovieList.vue"
 
 export default {
   components: { SearchBar, MovieList }
