@@ -1,16 +1,20 @@
-const ContentTypeList = ["all", "movie", "series", "episode"] as const
+import "@total-typescript/ts-reset"
 
-export type ContentType = (typeof ContentTypeList)[number]
+export type Movie = {
+  Title: string
+  Year: string
+  imdbID: string
+  Type: string
+  Poster: string
+}
 
-export type Enumerate<N extends number, Acc extends number[] = []> = Acc["length"] extends N
-  ? Acc[number]
-  : Enumerate<N, [...Acc, Acc["length"]]>
+export type MoviesRequest = {
+  Search: Movie[]
+  totalResults: string
+  Response: string
+}
 
-export type Range<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>
-
-export type SearchParamsType = {
-  search: string
-  year: number
-  type: ContentType
-  page: Range<1, 101>
+export type MoviesRequestFail = {
+  Response: string
+  Error: string
 }

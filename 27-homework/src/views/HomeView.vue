@@ -1,13 +1,20 @@
-<script setup lang="ts">
+<script lang="ts">
 import SearchBar from "@/components/SearchBar.vue"
-import MovieList from "@/components/MovieList.vue";
+import MovieList from "@/components/MovieList.vue"
+
+export default {
+  components: { SearchBar, MovieList }
+}
 </script>
 
 <template>
   <main class="flex flex-col items-center">
-    <h1>Title Here</h1>
-    <SearchBar />
-    <span>Sub text here</span>
-    <MovieList/>
+    <h1
+      class="bg-gradient-to-r from-slate-400 to-gray-400 bg-clip-text text-8xl font-bold text-transparent"
+    >
+      Movie Viewer
+    </h1>
+    <SearchBar class="mt-4 mb-10" />
+    <MovieList />
   </main>
 </template>
