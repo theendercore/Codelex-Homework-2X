@@ -14,7 +14,7 @@ export default {
   methods: {
     onsubmit(e: Event) {
       e.preventDefault()
-      this.store.fetchMovies(this.search)
+      this.store.fetchNew(this.search)
     }
   },
   components: { IconSearch }

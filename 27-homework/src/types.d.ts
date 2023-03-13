@@ -10,7 +10,7 @@ export type Movie = {
 
 export type MoviesRequest = {
   Search: Movie[]
-  totalResults: string
+  totalResults: number
   Response: string
 }
 
