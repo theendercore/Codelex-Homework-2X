@@ -4,8 +4,7 @@ import type { AxiosError } from "axios"
 import { fetchData } from "@/api/WeatherAppCalls"
 import type { WeatherData } from "@/types"
 
-export const useWeather = defineStore({
-  id: "weather",
+export const useWeather = defineStore("weather", {
   state: () => ({
     data: {} as WeatherData,
     searchParams: new URLSearchParams(`city=Riga&units=M`),
@@ -15,6 +14,7 @@ export const useWeather = defineStore({
   actions: {
     async fetchWeather() {
       this.loading = true
+
       await fetchData(this.searchParams)
         .then(({ data }) => {
           this.error = ""
@@ -24,6 +24,14 @@ export const useWeather = defineStore({
         .then(() => {
           this.loading = false
         })
+    },
+
+    toggleUnits() {
+      let unit = "M"
+      if (this.searchParams.get("units") === "M") unit = "I"
+
+      this.searchParams.set("units", unit)
+      this.fetchWeather()
     }
   }
 })
